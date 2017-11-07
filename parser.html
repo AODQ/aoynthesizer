@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pegged produced parse tree</title>
+<style>
+code {
+    position: relative;
+    font-family: monospace;
+    white-space: pre;
+}
+code.failure {
+    color: red;
+}
+/* hide tooltip */
+code span {
+    display: none;
+}
+/* show and style tooltip */
+code:hover span {
+    /* show tooltip */
+    display: block;
+    /* position relative to container div.tooltip */
+    position: absolute;
+    top: -1.6em;
+    left: -0.6em;
+    background: #ffffff;
+    padding: 0.5em;
+    color: #000000;
+    border: 0.1em solid #b7ddf2;
+    border-radius: 0.5em;
+    white-space: nowrap;
+    z-index: 1;
+}
+details {
+    margin-left:25px;
+    white-space: nowrap;
+}
+details.leaf summary::-webkit-details-marker {
+    opacity: 0;
+}
+</style>
+</head>
+<body>
+    <details><summary>AG [0, 135] <code>% WavPad { (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} %   % T1 WavPad!Z(5) WavPad!B(5) T2 WavPad!A(2) % <span><pre>% WavPad { (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} %   % T1 WavPad!Z(5) WavPad!B(5) T2 WavPad!A(2) % </pre></span></code></summary>
+<details><summary>AG.Mixer [0, 135] <code>% WavPad { (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} %   % T1 WavPad!Z(5) WavPad!B(5) T2 WavPad!A(2) % <span><pre>% WavPad { (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} %   % T1 WavPad!Z(5) WavPad!B(5) T2 WavPad!A(2) % </pre></span></code></summary>
+<details><summary>AG.Instrument [0, 89] <code>% WavPad { (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} %   <span><pre>% WavPad { (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} %   </pre></span></code></summary>
+<details><summary>AG.InstrumentT [2, 85] <code>WavPad { (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} <span><pre>WavPad { (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [2, 9] <code>WavPad <span><pre>WavPad </pre></span></code></summary>
+</details>
+<details><summary>AG.Struct [9, 85] <code>{ (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} <span><pre>{ (   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )} </pre></span></code></summary>
+<details><summary>AG.StructL [11, 83] <code>(   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )<span><pre>(   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )</pre></span></code></summary>
+<details><summary>AG.SExpr [11, 83] <code>(   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )<span><pre>(   (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) )</pre></span></code></summary>
+<details><summary>AG.SExpr [15, 82] <code>(exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) <span><pre>(exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))) </pre></span></code></summary>
+<details><summary>AG.Atom [16, 20] <code>exp <span><pre>exp </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [16, 19] <code>exp<span><pre>exp</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.SExpr [20, 80] <code>(* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))<span><pre>(* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f))</pre></span></code></summary>
+<details><summary>AG.Atom [21, 23] <code>* <span><pre>* </pre></span></code></summary>
+<details class="leaf"><summary>AG.Operator [21, 22] <code>*<span><pre>*</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.Atom [23, 25] <code>F <span><pre>F </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [23, 24] <code>F<span><pre>F</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.SExpr [25, 79] <code>(env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f)<span><pre>(env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f)</pre></span></code></summary>
+<details><summary>AG.Atom [26, 30] <code>env <span><pre>env </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [26, 29] <code>env<span><pre>env</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.SExpr [30, 62] <code>(tsaw (* T (* 0.508f N)) 0.02f) <span><pre>(tsaw (* T (* 0.508f N)) 0.02f) </pre></span></code></summary>
+<details><summary>AG.Atom [31, 36] <code>tsaw <span><pre>tsaw </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [31, 35] <code>tsaw<span><pre>tsaw</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.SExpr [36, 55] <code>(* T (* 0.508f N)) <span><pre>(* T (* 0.508f N)) </pre></span></code></summary>
+<details><summary>AG.Atom [37, 39] <code>* <span><pre>* </pre></span></code></summary>
+<details class="leaf"><summary>AG.Operator [37, 38] <code>*<span><pre>*</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.Atom [39, 41] <code>T <span><pre>T </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [39, 40] <code>T<span><pre>T</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.SExpr [41, 53] <code>(* 0.508f N)<span><pre>(* 0.508f N)</pre></span></code></summary>
+<details><summary>AG.Atom [42, 44] <code>* <span><pre>* </pre></span></code></summary>
+<details class="leaf"><summary>AG.Operator [42, 43] <code>*<span><pre>*</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.Atom [44, 51] <code>0.508f <span><pre>0.508f </pre></span></code></summary>
+<details><summary>AG.FloatL [44, 50] <code>0.508f<span><pre>0.508f</pre></span></code></summary>
+<details><summary>AG.Integer [44, 45] <code>0<span><pre>0</pre></span></code></summary>
+<details class="leaf"><summary>AG.Unsigned [44, 45] <code>0<span><pre>0</pre></span></code></summary>
+</details>
+</details>
+<details class="leaf"><summary>AG.Unsigned [46, 49] <code>508<span><pre>508</pre></span></code></summary>
+</details>
+</details>
+</details>
+<details><summary>AG.Atom [51, 52] <code>N<span><pre>N</pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [51, 52] <code>N<span><pre>N</pre></span></code></summary>
+</details>
+</details>
+</details>
+</details>
+<details><summary>AG.Atom [55, 60] <code>0.02f<span><pre>0.02f</pre></span></code></summary>
+<details><summary>AG.FloatL [55, 60] <code>0.02f<span><pre>0.02f</pre></span></code></summary>
+<details><summary>AG.Integer [55, 56] <code>0<span><pre>0</pre></span></code></summary>
+<details class="leaf"><summary>AG.Unsigned [55, 56] <code>0<span><pre>0</pre></span></code></summary>
+</details>
+</details>
+<details class="leaf"><summary>AG.Unsigned [57, 59] <code>02<span><pre>02</pre></span></code></summary>
+</details>
+</details>
+</details>
+</details>
+<details><summary>AG.SExpr [62, 74] <code>(+ N 60.0f) <span><pre>(+ N 60.0f) </pre></span></code></summary>
+<details><summary>AG.Atom [63, 65] <code>+ <span><pre>+ </pre></span></code></summary>
+<details class="leaf"><summary>AG.Operator [63, 64] <code>+<span><pre>+</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.Atom [65, 67] <code>N <span><pre>N </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [65, 66] <code>N<span><pre>N</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.Atom [67, 72] <code>60.0f<span><pre>60.0f</pre></span></code></summary>
+<details><summary>AG.FloatL [67, 72] <code>60.0f<span><pre>60.0f</pre></span></code></summary>
+<details><summary>AG.Integer [67, 69] <code>60<span><pre>60</pre></span></code></summary>
+<details class="leaf"><summary>AG.Unsigned [67, 69] <code>60<span><pre>60</pre></span></code></summary>
+</details>
+</details>
+<details class="leaf"><summary>AG.Unsigned [70, 71] <code>0<span><pre>0</pre></span></code></summary>
+</details>
+</details>
+</details>
+</details>
+<details><summary>AG.Atom [74, 78] <code>5.0f<span><pre>5.0f</pre></span></code></summary>
+<details><summary>AG.FloatL [74, 78] <code>5.0f<span><pre>5.0f</pre></span></code></summary>
+<details><summary>AG.Integer [74, 75] <code>5<span><pre>5</pre></span></code></summary>
+<details class="leaf"><summary>AG.Unsigned [74, 75] <code>5<span><pre>5</pre></span></code></summary>
+</details>
+</details>
+<details class="leaf"><summary>AG.Unsigned [76, 77] <code>0<span><pre>0</pre></span></code></summary>
+</details>
+</details>
+</details>
+</details>
+</details>
+</details>
+</details>
+</details>
+</details>
+</details>
+</details>
+<details><summary>AG.Music [89, 135] <code>% T1 WavPad!Z(5) WavPad!B(5) T2 WavPad!A(2) % <span><pre>% T1 WavPad!Z(5) WavPad!B(5) T2 WavPad!A(2) % </pre></span></code></summary>
+<details><summary>AG.MusicT [91, 118] <code>T1 WavPad!Z(5) WavPad!B(5) <span><pre>T1 WavPad!Z(5) WavPad!B(5) </pre></span></code></summary>
+<details class="leaf"><summary>AG.Unsigned [92, 94] <code>1 <span><pre>1 </pre></span></code></summary>
+</details>
+<details><summary>AG.Strum [94, 106] <code>WavPad!Z(5) <span><pre>WavPad!Z(5) </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [94, 100] <code>WavPad<span><pre>WavPad</pre></span></code></summary>
+</details>
+<details class="leaf"><summary>AG.Note [101, 102] <code>Z<span><pre>Z</pre></span></code></summary>
+</details>
+<details class="leaf"><summary>AG.Unsigned [103, 104] <code>5<span><pre>5</pre></span></code></summary>
+</details>
+</details>
+<details><summary>AG.Strum [106, 118] <code>WavPad!B(5) <span><pre>WavPad!B(5) </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [106, 112] <code>WavPad<span><pre>WavPad</pre></span></code></summary>
+</details>
+<details class="leaf"><summary>AG.Note [113, 114] <code>B<span><pre>B</pre></span></code></summary>
+</details>
+<details class="leaf"><summary>AG.Unsigned [115, 116] <code>5<span><pre>5</pre></span></code></summary>
+</details>
+</details>
+</details>
+<details><summary>AG.MusicT [118, 133] <code>T2 WavPad!A(2) <span><pre>T2 WavPad!A(2) </pre></span></code></summary>
+<details class="leaf"><summary>AG.Unsigned [119, 121] <code>2 <span><pre>2 </pre></span></code></summary>
+</details>
+<details><summary>AG.Strum [121, 133] <code>WavPad!A(2) <span><pre>WavPad!A(2) </pre></span></code></summary>
+<details class="leaf"><summary>AG.Iden [121, 127] <code>WavPad<span><pre>WavPad</pre></span></code></summary>
+</details>
+<details class="leaf"><summary>AG.Note [128, 129] <code>A<span><pre>A</pre></span></code></summary>
+</details>
+<details class="leaf"><summary>AG.Unsigned [130, 131] <code>2<span><pre>2</pre></span></code></summary>
+</details>
+</details>
+</details>
+</details>
+</details>
+</details>
+
+</body>
+</html>
+    

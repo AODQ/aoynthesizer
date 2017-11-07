@@ -1,0 +1,9 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"dlib": "0.11.1",
+		"luad": "~master",
+		"pegged": "0.4.2",
+		"selfscript": "0.1.0-alpha"
+	}
+}
