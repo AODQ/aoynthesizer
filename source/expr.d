@@ -51,7 +51,3 @@ struct Atom {
     )();
   }
 }
-
-float lerp ( float x, float y, float t ) {
-  return (1-t)*x + t*y;
-}
