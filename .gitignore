@@ -1,5 +1,6 @@
 .dub
 docs.json
+parser.html
 aoynth
 __dummy.html
 *.o
