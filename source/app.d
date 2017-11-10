@@ -13,7 +13,6 @@ void main() {
   float time = 0.0f;
   float sample_period = 1.0f/cast(float)sound.sampleRate;
   foreach ( i; 0 .. sound.size ) {
-    write(time, " ");
     sound[0, i] = sound[1, i] = mm.Play_Note(time);
     time += sample_period;
   }

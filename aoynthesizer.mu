@@ -4,7 +4,10 @@ introA {(
   (*(exp (sine (* (* F 4.0f) N))) 0.4f)
 )}
 introB {(  
-  (*(exp (sine (* (+ F 2.0f) N))) 0.4f)
+  (*(exp (sine (* (+ F 2.0f) N))) R)
+)}
+FREQADD {(
+  (+ Z X)
 )}
 % 
 

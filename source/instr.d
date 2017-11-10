@@ -14,6 +14,7 @@ struct Strum {
 }
 
 class MusicMixer {
+  Atom freqadd;
   Instrument[string] instruments;
 
   Strum[][int] strums;
@@ -38,8 +39,8 @@ class MusicMixer {
             end   = s.end;
       if ( time < start || time > end ) continue;
       float fade   = 1.0f - (time-start)/(end-start);
-      float res = instruments[s.name].expression.Eval(s.note, fade, time);
-      freq += res;
+      float res = instruments[s.name].expression.Eval(s.note, fade,time,freq,0);
+      freq = freqadd.Eval(s.note, fade, time, freq, res);
     }
     return freq;
   }

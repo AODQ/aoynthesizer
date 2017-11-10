@@ -8,18 +8,18 @@ struct Atom {
   this ( float val   ) {v = val;      }
   this ( string val  ) {v = val;      }
 
-  float Eval(float note, float fade, float time) {
+  float Eval(float note, float fade, float time, float Z, float X) {
     import std.math;
     return v.visit!(
       (float f) { return f; },
       (Atom[] list) {
         if ( list.length == 1 )
-          return list[0].Eval(note, fade, time);
-        float lh = list[1].Eval(note, fade, time), rh, zh;
+          return list[0].Eval(note, fade, time, Z, X);
+        float lh = list[1].Eval(note, fade, time, Z, X), rh, zh;
         if ( list.length > 2 )
-          rh = list[2].Eval(note, fade, time);
+          rh = list[2].Eval(note, fade, time, Z, X);
         if ( list.length > 3 )
-          zh = list[3].Eval(note, fade, time);
+          zh = list[3].Eval(note, fade, time, Z, X);
         switch(list[0].v.get!string) {
           default: assert(false, "Unknown function " ~ list[0].v.get!string);
           case "*": return lh * rh; case "/": return lh / rh;
@@ -48,6 +48,8 @@ struct Atom {
           case "N": return 16.35f * pow(1.059463f, note);
           case "F": return fade;
           case "T": return time;
+          case "Z": return Z;
+          case "X": return X;
         }
       }
     )();

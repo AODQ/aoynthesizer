@@ -57,23 +57,32 @@ Atom Parse_Atom ( ParseTree p ) {
   }
 }
 
+string InstrumentT_Str ( ParseTree p ) {
+  assert(p.name == "AG.InstrumentT");
+  return p.children[0].matches[0];
+}
+
+ParseTree InstrumentT_Expr ( ParseTree p ) {
+  return p.children[1].children[0].children[0];
+}
+
 Instrument Parse_Instrument ( ParseTree p ) {
   assert(p.name == "AG.InstrumentT");
-  string name = p.children[0].matches[0];
-  ParseTree exp = p.children[1].children[0].children[0];
+  string name = InstrumentT_Str(p);
+  ParseTree exp = p.InstrumentT_Expr;
   assert(exp.name == "AG.SExpr");
   return Instrument(Parse_Atom(exp), name);
 }
 
 void Parse_Strum ( ParseTree p, ref MusicMixer mm ) {
   assert(p.name == "AG.MusicT");
-  float note_start = p.children[0].Parse_Atom().Eval(0.0f, 0.0f, 0.0f);
+  float note_start = p.children[0].Parse_Atom().Eval(0, 0, 0, 0, 0);
   foreach ( strum; p.children[1..$] ) {
     assert(strum.name == "AG.Strum");
     string label = strum.children[0].matches[0];
     int note = cast(int)(strum.children[1].matches[0][0]);
     float note_end = note_start +
-            strum.children[2].Parse_Atom().Eval(0.0f, 0.0f, 0.0f);
+            strum.children[2].Parse_Atom().Eval(0, 0, 0, 0, 0);
     mm.New_Strum(label, note, note_start, note_end);
   }
 }
@@ -87,7 +96,11 @@ void Parse_Code ( ParseTree ptree, ref MusicMixer mm ) {
           Parse_Code(i, mm);
       break;
       case "AG.InstrumentT":
-        mm.New_Instrument(Parse_Instrument(p));
+        if ( p.InstrumentT_Str == "FREQADD" ) {
+          mm.freqadd = Parse_Atom(p.InstrumentT_Expr);
+        } else {
+          mm.New_Instrument(Parse_Instrument(p));
+        }
       break;
       case "AG.MusicT":
         Parse_Strum(p, mm);
