@@ -14,8 +14,8 @@ AG:
   InstrumentT < Iden Struct
 
   Music < '%' MusicT+ '%'
-  MusicT < 'T' Unsigned Strum+
-  Strum < Iden '!' Note '(' Unsigned ')'
+  MusicT < 'T' SExpr Strum+
+  Strum < Iden '!' Note SExpr
 
   SExpr < "(" (Atom/SExpr)+ ")"
 
@@ -52,7 +52,8 @@ Atom Parse_Atom ( ParseTree p ) {
       return Parse_Atom(p.children[0]);
     case "AG.Operator": return Atom(p.matches[0]);
     case "AG.FloatL":   return Atom(p.input[p.begin..p.end-1].to!float);
-    case "AG.Integer":  return Atom(p.input.to!int);
+    case "AG.Integer":  return Atom(p.input[p.begin..p.end].to!int);
+    case "AG.Unsigned": return Atom(p.input[p.begin..p.end].to!int);
   }
 }
 
@@ -66,12 +67,13 @@ Instrument Parse_Instrument ( ParseTree p ) {
 
 void Parse_Strum ( ParseTree p, ref MusicMixer mm ) {
   assert(p.name == "AG.MusicT");
-  int note_start = p.children[0].matches[0].to!int;
+  float note_start = p.children[0].Parse_Atom().Eval(0.0f, 0.0f, 0.0f);
   foreach ( strum; p.children[1..$] ) {
     assert(strum.name == "AG.Strum");
     string label = strum.children[0].matches[0];
     int note = cast(int)(strum.children[1].matches[0][0]);
-    int note_end = note_start + strum.children[2].matches.join().to!int;
+    float note_end = note_start +
+            strum.children[2].Parse_Atom().Eval(0.0f, 0.0f, 0.0f);
     mm.New_Strum(label, note, note_start, note_end);
   }
 }

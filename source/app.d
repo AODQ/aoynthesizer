@@ -9,10 +9,11 @@ auto New_sound ( float dur, uint freq ) {
 void main() {
   import interpreter;
   auto mm = Construct_Music();
-  auto sound = New_sound(10.0, 1000);
+  auto sound = New_sound(mm.duration, 1000);
   float time = 0.0f;
   float sample_period = 1.0f/cast(float)sound.sampleRate;
   foreach ( i; 0 .. sound.size ) {
+    write(time, " ");
     sound[0, i] = sound[1, i] = mm.Play_Note(time);
     time += sample_period;
   }
@@ -26,7 +27,7 @@ void main() {
     auto pid = spawnShell(`rm test.wav`);
     wait(pid);
   }
-  { // delete
+  { // vlc shell
     auto pid = spawnShell(`vlc -R test.mp3`);
     wait(pid);
   }

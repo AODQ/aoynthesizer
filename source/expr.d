@@ -41,8 +41,10 @@ struct Atom {
         }
       },
       (string s) {
+        import std.random;
         switch ( s ) {
           default: assert(0, "VAR " ~ s ~ " UNDEFINED");
+          case "R": return uniform(0.0f, 1.0f);
           case "N": return 16.35f * pow(1.059463f, note);
           case "F": return fade;
           case "T": return time;

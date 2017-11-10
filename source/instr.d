@@ -9,31 +9,35 @@ struct Instrument {
 
 struct Strum {
   string name;
-  int note, start, end;
+  float start, end;
+  int note;
 }
 
 class MusicMixer {
   Instrument[string] instruments;
 
   Strum[][int] strums;
+  float duration = 0.0f;
 
   void New_Instrument ( Instrument i ) {
     instruments[i.name] = i;
   }
 
-  void New_Strum ( string name, int note, int start, int end ) {
-    for ( int i = start; i != end; ++ i ) {
-      strums[i] ~= Strum(name, note, start, end);
+  void New_Strum ( string name, int note, float start, float end ) {
+    for ( int i = cast(int)start; i != cast(int)end+1; ++ i ) {
+      strums[i] ~= Strum(name, start, end, note);
     }
+    duration = duration < end ? end : duration;
   }
 
   float Play_Note ( int idx, float time ) {
     if ( idx !in strums ) return 0.0f;
     float freq = 0.0f;
     foreach ( s; strums[idx] ) {
-      float start = cast(float)s.start,
-            end   = cast(float)s.end,
-            fade   = 1.0f - (time-start)/(end-start);
+      float start = s.start,
+            end   = s.end;
+      if ( time < start || time > end ) continue;
+      float fade   = 1.0f - (time-start)/(end-start);
       float res = instruments[s.name].expression.Eval(s.note, fade, time);
       freq += res;
     }

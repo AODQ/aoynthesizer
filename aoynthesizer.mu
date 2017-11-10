@@ -1,13 +1,17 @@
-# bell
+# bass
 %
-WavPad { (
-  (exp (* F (env (tsaw (* T (* 0.508f N)) 0.02f) (+ N 60.0f) 5.0f)))
+introA {(  
+  (*(exp (sine (* (* F 4.0f) N))) 0.4f)
 )}
-%
+introB {(  
+  (*(exp (sine (* (+ F 2.0f) N))) 0.4f)
+)}
+% 
 
-
+ 
 # play
 %
-T1 WavPad!Z(5) WavPad!B(5)
-T2 WavPad!A(2)
-%
+T(0) introB!J(0.5f)
+T(1) introB!J(1.5f)
+T(8) introB!J(1.5f)
+% 
